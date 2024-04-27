@@ -1,0 +1,10 @@
+table Translation {
+    eng: string (key, required);
+    ita: string;
+    deu: string;
+    jap: string;
+}
+
+root_type Translation;
+
+file_identifier "TRNS";

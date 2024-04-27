@@ -1,0 +1,27 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+    "translations:flatc": "cd .submodules/flatbuffers && cmake -B build . && cd build && make",
+    "translations:json": ".submodules/flatbuffers/build/flatc --json --strict-json -o translations schemas/Translation.fbs -- page/public/translations/*.bin",
+    "translations:bin": ".submodules/flatbuffers/build/flatc -o page/public/translations -I schemas --binary schemas/Translation.fbs translations/*.json",
+    "translations:ts": ".submodules/flatbuffers/build/flatc -o page/src/generated -I schemas --ts --ts-omit-entrypoint schemas/Translation.fbs",
+
+    "dev:page": "cd page && pnpm run dev",
+    "build:page": "cd page && pnpm run build"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.7.3",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "flatbuffers": "^24.3.25"
+  }
+}
